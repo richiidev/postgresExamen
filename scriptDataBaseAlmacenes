@@ -1,0 +1,108 @@
+﻿/*Script para crear tablas y llenarlas*/
+/*RichiiDev*/
+/*https://github.com/richiidev*/
+create table cajeros(id serial primary key,cajero  varchar(200) unique not null);
+insert into cajeros(cajero)values('ricardo');
+insert into cajeros(cajero)values('fernando');
+insert into cajeros(cajero)values('fabiola');
+insert into cajeros(cajero)values('andrea');
+insert into cajeros(cajero)values('mayra');
+
+create table productos(id serial primary key,producto  varchar (200) unique not null,precio int not null);
+insert into productos(producto,precio)values('coca-cola',35);
+insert into productos(producto,precio)values('leche',40);
+insert into productos(producto,precio)values('pepsi',200);
+insert into productos(producto,precio)values('cafe',500);
+insert into productos(producto,precio)values('sillon',6000);
+insert into productos(producto,precio)values('tv',2500);
+insert into productos(producto,precio)values('pintura',1100);
+insert into productos(producto,precio)values('azucar',30);
+insert into productos(producto,precio)values('colchon',999);
+insert into productos(producto,precio)values('agua',55);
+
+
+
+create table maquinas_registradas(id serial primary key, piso int not null);
+insert into maquinas_registradas(piso)values(1);
+insert into maquinas_registradas(piso)values(2);
+insert into maquinas_registradas(piso)values(3);
+
+
+create table venta(id serial primary key, cajero int,maquina int,
+producto int,
+ FOREIGN KEY (cajero)
+      REFERENCES cajeros (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+      FOREIGN KEY (maquina)
+      REFERENCES maquinas_registradas (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+       FOREIGN KEY (producto)
+      REFERENCES productos (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+       )
+
+insert into venta(cajero,maquina,producto)values(1,1,1);
+insert into venta(cajero,maquina,producto)values(2,3,5);
+insert into venta(cajero,maquina,producto)values(1,1,6);
+insert into venta(cajero,maquina,producto)values(3,2,6);
+insert into venta(cajero,maquina,producto)values(5,2,8);
+insert into venta(cajero,maquina,producto)values(4,3,9);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,6);
+insert into venta(cajero,maquina,producto)values(1,1,5);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,8);
+insert into venta(cajero,maquina,producto)values(1,1,8);
+insert into venta(cajero,maquina,producto)values(1,1,8);
+insert into venta(cajero,maquina,producto)values(1,1,9);
+insert into venta(cajero,maquina,producto)values(1,1,9);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,1);
+insert into venta(cajero,maquina,producto)values(1,1,2);
+insert into venta(cajero,maquina,producto)values(1,1,2);
+insert into venta(cajero,maquina,producto)values(1,1,1);
+insert into venta(cajero,maquina,producto)values(2,3,5);
+insert into venta(cajero,maquina,producto)values(1,1,6);
+insert into venta(cajero,maquina,producto)values(3,2,6);
+insert into venta(cajero,maquina,producto)values(5,2,8);
+insert into venta(cajero,maquina,producto)values(4,3,9);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,6);
+insert into venta(cajero,maquina,producto)values(1,1,5);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,8);
+insert into venta(cajero,maquina,producto)values(1,1,8);
+insert into venta(cajero,maquina,producto)values(1,1,8);
+insert into venta(cajero,maquina,producto)values(1,1,9);
+insert into venta(cajero,maquina,producto)values(1,1,9);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,1);
+insert into venta(cajero,maquina,producto)values(1,1,2);
+insert into venta(cajero,maquina,producto)values(1,1,2);
+insert into venta(cajero,maquina,producto)values(1,1,1);
+insert into venta(cajero,maquina,producto)values(2,3,5);
+insert into venta(cajero,maquina,producto)values(1,1,6);
+insert into venta(cajero,maquina,producto)values(3,2,6);
+insert into venta(cajero,maquina,producto)values(5,2,8);
+insert into venta(cajero,maquina,producto)values(4,3,9);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,6);
+insert into venta(cajero,maquina,producto)values(1,1,5);
+insert into venta(cajero,maquina,producto)values(1,4,7);
+insert into venta(cajero,maquina,producto)values(1,1,8);
+insert into venta(cajero,maquina,producto)values(1,1,8);
+insert into venta(cajero,maquina,producto)values(1,1,8);
+insert into venta(cajero,maquina,producto)values(1,1,9);
+insert into venta(cajero,maquina,producto)values(1,1,9);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,7);
+insert into venta(cajero,maquina,producto)values(1,1,1);
+insert into venta(cajero,maquina,producto)values(1,1,2);
+insert into venta(cajero,maquina,producto)values(1,1,2);
+
+

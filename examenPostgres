@@ -1,0 +1,56 @@
+﻿/* optener id producto y total de ventas de mayor a menor ventas */
+select p.id,p.producto,COUNT(v.producto) as ventas 
+from productos as p
+left join venta as v on p.id = v.producto
+group by p.id,p.producto
+order by count(v.producto)  desc
+
+/*Obtener un informe completo de ventas, indicando el nombre del cajero que realizo la venta, nombre y precios
+de los productos vendidos, y el piso en el que se encuentra la máquina registradora donde se realizó la venta.*/
+select c.cajero,p.producto,p.precio,m.piso
+from venta as v
+inner join productos as p on  v.producto = p.id
+inner join cajeros as c on v.cajero = c.id
+inner join maquinas_registradas as m on v.maquina = m.id
+/* por persona 
+where c.cajero = 'ricardo' */
+
+/*Obtener las ventas totales realizadas en cada piso.*/
+select piso,count(p.producto) as total
+from venta as v
+inner join productos as p ON p.id = v.producto
+inner join maquinas_registradas as m ON m.id = v.maquina 
+group by piso
+order by piso 
+
+
+/*Obtener el código y nombre de cada cajero junto con el importe total de sus ventas.*/
+select c.id, c.cajero,sum(p.precio) as total
+from venta as v
+inner join cajeros as c on c.id = v.cajero
+inner join productos as p on p.id = v.producto
+/* por persona
+where c.cajero = 'ricardo' */
+group by c.id
+order by c.id 
+
+
+ 
+/*Obtener el código y nombre de aquellos cajeros que hayan realizado ventas en pisos cuyas ventas totales
+sean inferiores a los 5000 pesos.*/
+select c.id, c.cajero 
+from venta as v
+inner join cajeros as c on c.id = v.cajero
+where c.id in(select cajero from venta 
+where maquina in (select id from maquinas_registradas 
+where piso in (select m.piso from venta as v
+			inner join maquinas_registradas as m on m.id = v.maquina
+			inner join productos as p on p.id = v.producto
+			where v.producto = p.id and v.maquina = m.id
+			group by m.piso
+			having sum(p.precio) < 50000 )))
+			
+
+
+
+
